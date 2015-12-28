@@ -9,11 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.redColor()
+        button.setTitle("GENERATE", forState: .Normal)
+        button.addTarget(self, action: "buttonTapped", forControlEvents: .TouchUpInside)
+        view.addSubview(button)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        button.sizeToFit()
+        button.center = view.center
+    }
+    
+    func buttonTapped() {
+        print(Bitcoin.newPrivateKey())
     }
 }
 
